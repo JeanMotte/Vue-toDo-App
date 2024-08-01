@@ -104,7 +104,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, onMounted, onUnmounted, ref } from 'vue'
 
   const checkedItems = ref<number[]>([])
   const newCardInput = ref('')
@@ -150,8 +150,24 @@
 
   // Computed property to reverse the filtered cards array
   const reversedCards = computed(() => filteredCards.value.slice().reverse())
-</script>
 
+  // Handle the Esc key press
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      // Remove focus from the input
+      (document.activeElement as HTMLElement)?.blur()
+    }
+  }
+
+  // Add and remove event listeners
+  onMounted(() => {
+    window.addEventListener('keydown', handleKeydown)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeydown)
+  })
+</script>
 
 <style scoped>
 .line-through {
