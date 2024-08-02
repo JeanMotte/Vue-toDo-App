@@ -60,8 +60,15 @@
             </v-col>
           </v-row>
 
+          <!-- No Liked Todos Message -->
+          <v-row v-if="isFilterLiked && !displayedCards.length" dense>
+            <v-col>
+              <p class="text-center mt-5 text-xl text-gray-500 italic">No liked todos for the moment</p>
+            </v-col>
+          </v-row>
+
           <!-- Cards Display -->
-          <v-row class="flex" dense>
+          <v-row v-else class="flex" dense>
             <v-col v-for="card in displayedCards" :key="card.id" class="mt-3" cols="12">
               <v-card class="mx-auto" hover max-width="900">
                 <v-card-text>
