@@ -7,9 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppBarComponent: typeof import('./components/AppBarComponent.vue')['default']
     AppFooter: typeof import('./components/AppFooter.vue')['default']
+    FilterButtonsComponent: typeof import('./components/FilterButtonsComponent.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    NewCardInputComponent: typeof import('./components/NewCardInputComponent.vue')['default']
+    NoLikedTodosMessageComponent: typeof import('./components/NoLikedTodosMessageComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TodoCardComponent: typeof import('./components/TodoCardComponent.vue')['default']
   }
 }
